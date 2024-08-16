@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'dashboard',  # MyAPP
     'leads',  # MyAPP
     'django_seed',  # MyAPP
+    'aidialer',
+    'cases'
+
 ]
 
 MIDDLEWARE = [
