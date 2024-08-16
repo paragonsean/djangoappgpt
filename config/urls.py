@@ -6,7 +6,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('admin/', admin.site.urls),
-path('api/dialer/', include('aidialer.urls')),
+    # path('api/dialer/', include('aidialer.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
