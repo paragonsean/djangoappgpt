@@ -1,5 +1,7 @@
+
 from . import views
 from leads import views as leads_views
+from aidialer import views as aidialer_views
 from accounts import views as accounts_views
 from django.urls import path
 
@@ -91,4 +93,10 @@ urlpatterns = [
         leads_views.AgentDeleteView.as_view(),
         name='leads_agent_delete'
     ),
+    # adding ai dialer path here
+    path(
+        'aidialer',
+        aidialer_views.ai_dialer_view,
+        name='ai_dialer'
+    )
 ]
