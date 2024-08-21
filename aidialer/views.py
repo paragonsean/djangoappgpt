@@ -49,7 +49,48 @@ def ai_dialer_view(request):
     View for fetching and displaying all transcripts in AiDialer.
     """
     # transcripts = fetch_all_transcripts()
-    transcripts = ['test transcripts', 'call 1', 'call 2', 'call 3']
+    
+    '''
+    EXAMPLE RESPONSE:
+    {'call_sid': 'CA72d2d7a52fc61e02e94bc840871cd493',
+    'transcript': [{'role': 'user', 'content': 'Hello'},
+    {'role': 'assistant',
+    'content': 'I am an AI voice assistant here to answer any
+    questions you may have. At any point during this call you 
+    can say Transfer me which will transfer you to a live
+    representative. Ask away!'},
+    {'role': 'user', 'content': " Hey. What's the weather today?",
+    'name': 'user'}, {'role': 'assistant', 'content': "Sure thing!
+    Could you tell me which city you're in?"}, {'role': 'user', 
+    'content': " I'm in Atlanta.", 'name': 'user'}, {'role': 'user',
+    'content': " I'm in Atlanta. Thanks for your help.",
+    'name': 'user'}]}
+    '''
+    transcripts = [{'call_sid': 'CA72d2d7a52fc61e02e94bc840871cd493',
+    'transcript': [{'role': 'user', 'content': 'Hello'},
+    {'role': 'assistant',
+    'content': 'I am an AI voice assistant here to answer any \
+    questions you may have. At any point during this call you \
+    can say Transfer me which will transfer you to a live \
+    representative. Ask away!'},
+    {'role': 'user', 'content': " Hey. What's the weather today?",
+    'name': 'user'}, {'role': 'assistant', 'content': "Sure thing! \
+    Could you tell me which city you're in?"}, {'role': 'user', 
+    'content': " I'm in Atlanta.", 'name': 'user'}, {'role': 'user',
+    'content': " I'm in Atlanta. Thanks for your help.",
+    'name': 'user'}]}, {'call_sid': 'numer 2',
+    'transcript': [{'role': 'user', 'content': 'Hello'},
+    {'role': 'assistant',
+    'content': 'I am an AI voice assistant here to answer any \
+    questions you may have. At any point during this call you \
+    can say Transfer me which will transfer you to a live \
+    representative. Ask away!'},
+    {'role': 'user', 'content': " Hey. What's the weather today?",
+    'name': 'user'}, {'role': 'assistant', 'content': "Sure thing! \
+    Could you tell me which city you're in?"}, {'role': 'user', 
+    'content': " I'm in Atlanta.", 'name': 'user'}, {'role': 'user',
+    'content': " I'm in Atlanta. Thanks for your help.",
+    'name': 'user'}]}]
     
     template_name = 'dashboard/pages/aidialer_home.html'
     
