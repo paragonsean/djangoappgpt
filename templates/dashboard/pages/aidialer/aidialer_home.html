@@ -1,28 +1,39 @@
 {% extends "dashboard.html" %}
+{% load static %}
 {% block title %}
     Ai Dialer -
 {% endblock title %}
 {% block content %}
     <main class="p-4 md:ml-64 h-auto pt-20 min-h-screen bg-gray-50 dark:bg-gray-900">
+        
         <section class="bg-white dark:bg-gray-900">
             <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
                 <h2 class="mb-10 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Call Transcripts</h2>
-
+                
                 <!-- Loop through each transcript -->
                 {% for transcript_data in transcripts %}
                     <div class="mb-4 bg-gray-100 rounded-lg shadow dark:bg-gray-800">
                         <!-- Collapsible Box Header -->
-                        <button type="button" class="w-full p-4 text-left text-lg font-semibold text-gray-900 dark:text-white focus:outline-none"
-                                onclick="toggleTranscript('transcript-{{ forloop.counter }}')">
-                            Call SID: {{ transcript_data.call_sid }}
-                        </button>
+                        <div class="flex justify-between items-center p-4">
+                            <!-- Call SID -->
+                            <button type="button" class="w-full text-left text-lg font-semibold text-gray-900 dark:text-white focus:outline-none"
+                                    onclick="toggleTranscript('transcript-{{ forloop.counter }}')">
+                                Call SID: {{ transcript_data.call_sid }}
+                            </button>
+
+                            <!-- Phone Icon Button -->
+                            <a href="{% url 'aidialer:call_contact' transcript_data.call_sid %}" class="ml-4 bg-green-500 hover:bg-green-600 text-white p-2 rounded-full focus:outline-none">
+                                <i class="fas fa-phone"></i> <!-- Phone icon -->
+                            </a>
+                            <div>{{message}}</div>
+                        </div>
 
                         <!-- Collapsible Box Content -->
                         <div id="transcript-{{ forloop.counter }}" class="hidden">
                             <div class="p-4">
                                 <!-- Display each message in the transcript -->
                                 {% for message in transcript_data.transcript %}
-                                    <div class="mb-2 bg-gray-200 p-3 rounded dark:bg-gray-700">
+                                    <div class="mb-2 bg-gray-200 dark:hover:bg-gray-600 p-3 rounded dark:bg-gray-700">
                                         <p class="font-semibold text-gray-800 dark:text-white">
                                             Role: {{ message.role|title }}
                                         </p>
@@ -44,10 +55,7 @@
         </section>
     </main>
 
-    <script>
-        function toggleTranscript(id) {
-            const element = document.getElementById(id);
-            element.classList.toggle('hidden');
-        }
-    </script>
+    <script type="text/javascript"
+        src="{% static 'js/ai_dialer.js' %}"></script>
+
 {% endblock content %}

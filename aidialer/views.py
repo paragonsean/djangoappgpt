@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 from django.shortcuts import get_object_or_404
@@ -92,7 +92,12 @@ def ai_dialer_view(request):
     'content': " I'm in Atlanta. Thanks for your help.",
     'name': 'user'}]}]
     
-    template_name = 'dashboard/pages/aidialer_home.html'
+    template_name = 'dashboard/pages/aidialer/aidialer_home.html'
     
     # Return the transcripts as JSON or pass them to a template
     return render(request, template_name, {'transcripts': transcripts})
+
+def call_contact(request, call_sid):
+    template_name = 'dashboard/pages/aidialer/aidialer_call.html'
+
+    return render(request, template_name, {'message': f'call details form for sid: {call_sid}'})
